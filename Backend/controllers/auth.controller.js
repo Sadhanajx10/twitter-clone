@@ -1,4 +1,4 @@
-import { generateTokenandSetCookie } from "../lib/util/generateToken.js";
+import { generateTokenAndSetCookie } from "../lib/util/generateToken.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 //import bcrypt from "bcryptjs";
@@ -77,17 +77,17 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: "Inavlid username or password" });
     }
 
-    generateTokenandSetCookie(user._id, res);
+    generateTokenAndSetCookie(user._id, res);
 
     res.status(200).json({
-      _id: newUser._id,
-      fullName: newUser.fullName,
-      username: newUser.username,
-      email: newUser.email,
-      followers: newUser.followers,
-      following: newUser.following,
-      profileImg: newUser.profileImg,
-      coverImg: newUser.coverImg,
+      _id: user._id,
+      fullName: user.fullName,
+      username: user.username,
+      email: user.email,
+      followers: user.followers,
+      following: user.following,
+      profileImg: user.profileImg,
+      coverImg: user.coverImg,
     });
   } catch (error) {
     console.log("Error in signup controller", error.message);
