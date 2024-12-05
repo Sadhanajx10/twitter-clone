@@ -54,6 +54,13 @@ const userSchema = new mongoose.Schema({ // schema can enforce structure on your
         type: String,
         default: "",
     },
+    likedPosts:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"post",
+            default:[],
+        },
+    ],
 }, 
     {timestamps: true}
 ); //timestamps will give the created at and updated at the field for a user ( e.g to show the member since 'date') 
